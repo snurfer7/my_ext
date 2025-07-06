@@ -1,0 +1,14 @@
+services:
+  web:
+    cgroup: host #systemd実行対応
+    container_name: ext_web
+    hostname: localhost
+    build: ./.dockerbuild/aml2
+    privileged: true
+    working_dir: /usr/local/app/
+    platform: linux/arm64/v8
+    volumes:
+      - .:/usr/local/app/
+    ports:
+      - 8080:80
+      - 443:443

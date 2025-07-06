@@ -1,0 +1,10 @@
+ARG_ENABLE('helloworld', 'helloworld support', 'no');
+
+if (PHP_HELLOWORLD != 'no') {
+	AC_DEFINE('HAVE_HELLOWORLD', 1, "Define to 1 if the PHP extension 'helloworld' is available.");
+
+	EXTENSION('helloworld', 'helloworld.c', null, '/DZEND_ENABLE_STATIC_TSRMLS_CACHE=1');
+}
+
+PHP_ADD_INCLUDE($MY_EXT_DIR/include)
+PHP_INSTALL_HEADERS("ext/helloworld", "include/test1.h include/test2.h");
